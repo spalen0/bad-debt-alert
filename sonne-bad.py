@@ -1,7 +1,7 @@
 import os, requests, datetime
 import asyncio, telegram
 
-url = 'https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/optimism_sonne.json'
+url = os.environ['DATA_URL']
 response = requests.get(url)
 
 if response.status_code == 200:
