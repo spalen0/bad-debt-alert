@@ -1,4 +1,4 @@
-name: Trigger
+name: Sonne Bad Debt Trigger
 
 on:
   schedule:
