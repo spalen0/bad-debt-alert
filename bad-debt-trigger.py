@@ -12,13 +12,14 @@ if response.status_code == 200:
     debt = round(total / 10 ** decimals, 2)
     date = datetime.datetime.fromtimestamp(updated)
 
-    if total > int(os.environ['DEBT_TRIGGER']):
+    if total > int(os.environ['DEBT_THRESHOLD']):
         bot = telegram.Bot(token=os.environ['TELEGRAM_TOKEN'])
         chat_id = os.environ['TELEGRAM_CHAT_ID']
         print(f'Sending message to {chat_id}')
-        asyncio.run(bot.send_message(chat_id=chat_id, text=f'⚠️ Sonne Bad debt trigger reached: ${debt} at {date} ⚠️'))
+        protocol = os.environ['PROTOCOL']
+        asyncio.run(bot.send_message(chat_id=chat_id, text=f'⚠️ {protocol} Bad Debt: ${debt} at {date} ⚠️'))
 
-    print(f':red_circle: Total: ${debt}')
+    print(f'Total: ${debt}')
     print(f'Updated: {date}')
 else:
     print(f'Request failed with status code {response.status_code}')
