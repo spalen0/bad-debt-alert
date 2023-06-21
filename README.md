@@ -1,6 +1,6 @@
 # Bad Debt Alert
 
-Alerting Telegram bot for bad debt data from Risk DAO.
+Alerting Telegram bot for bad debt data from Risk DAO. It's a simple Python script that is triggered by GitHub actions every hour. It checks bad debt data for a given protocol and if the value is above a given threshold it will send Telegram message to a defined chat.
 
 ## Add new alert
 
