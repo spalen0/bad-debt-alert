@@ -22,7 +22,7 @@ if response.status_code == 200:
     deposits = locale.currency(deposits / 10 ** decimals, grouping=True)
     borrows = locale.currency(borrows / 10 ** decimals, grouping=True)
     threshold = int(os.getenv('DEBT_THRESHOLD', 0))
-    threshold_ratio = int(os.getenv('DEBT_THRESHOLD_RATIO', 100))
+    threshold_ratio = float(os.getenv('DEBT_THRESHOLD_RATIO', 100))
     protocol = os.getenv('PROTOCOL', '')
 
     message = f'⚠️ {protocol} Bad Debt ratio: {ratio_of_bad_debt}% at {date} ⚠️\nDebt: {debt}\nTVL: {tvl}\nDeposits: {deposits}\nBorrows: {borrows}'
