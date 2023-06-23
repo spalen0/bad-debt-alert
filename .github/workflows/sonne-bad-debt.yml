@@ -24,4 +24,5 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Sonne"
         DEBT_THRESHOLD: "100"
+        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/optimism_sonne.json"

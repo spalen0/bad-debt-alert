@@ -1,26 +1,37 @@
-import os, requests, datetime
+import os, requests, datetime, locale
 import asyncio, telegram
 
 url = os.environ['DATA_URL']
 response = requests.get(url)
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 if response.status_code == 200:
     data = response.json()
-    total = int(data['total']) * -1
+    total_bad_debt = int(data['total']) * -1
     decimals = int(data['decimals'])
     updated = int(data['updated'])
-    debt = round(total / 10 ** decimals, 2)
-    date = datetime.datetime.fromtimestamp(updated)
-    threshold = int(os.environ['DEBT_THRESHOLD'])
+    tvl = int(data['tvl'])
+    deposits = int(data['deposits'])
+    borrows = int(data['borrows'])
 
-    if debt > threshold:
+    # ratio of bad debt to total value locked
+    ratio_of_bad_debt = round(total_bad_debt / tvl * 100, 2)
+    date = datetime.datetime.fromtimestamp(updated)
+    debt = locale.currency(total_bad_debt / 10 ** decimals, grouping=True)
+    tvl = locale.currency(tvl / 10 ** decimals, grouping=True)
+    deposits = locale.currency(deposits / 10 ** decimals, grouping=True)
+    borrows = locale.currency(borrows / 10 ** decimals, grouping=True)
+    threshold = int(os.getenv('DEBT_THRESHOLD', 0))
+    threshold_ratio = int(os.getenv('DEBT_THRESHOLD_RATIO', 100))
+    protocol = os.getenv('PROTOCOL', '')
+
+    message = f'⚠️ {protocol} Bad Debt ratio: {ratio_of_bad_debt}% at {date} ⚠️\nDebt: {debt}\nTVL: {tvl}\nDeposits: {deposits}\nBorrows: {borrows}'
+    print(message)
+
+    if total_bad_debt / 10 ** decimals > threshold or ratio_of_bad_debt > threshold_ratio:
         bot = telegram.Bot(token=os.environ['TELEGRAM_TOKEN'])
         chat_id = os.environ['TELEGRAM_CHAT_ID']
-        print(f'Sending message')
-        protocol = os.environ['PROTOCOL']
-        asyncio.run(bot.send_message(chat_id=chat_id, text=f'⚠️ {protocol} Bad Debt: ${debt} at {date} ⚠️'))
-
-    print(f'Total: ${debt}')
-    print(f'Updated: {date}')
+        print(f'Sending Telegram message')
+        asyncio.run(bot.send_message(chat_id=chat_id, text=message))
 else:
     print(f'Request failed with status code {response.status_code}')
