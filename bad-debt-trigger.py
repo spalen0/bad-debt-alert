@@ -28,7 +28,7 @@ if response.status_code == 200:
     message = f'⚠️ {protocol} Bad Debt ratio: {ratio_of_bad_debt}% at {date} ⚠️\nDebt: {debt}\nTVL: {tvl}\nDeposits: {deposits}\nBorrows: {borrows}'
     print(message)
 
-    if total_bad_debt / 10 ** decimals > threshold or ratio_of_bad_debt > threshold_ratio:
+    if (threshold > 0 and total_bad_debt / 10 ** decimals > threshold) or ratio_of_bad_debt > threshold_ratio:
         bot = telegram.Bot(token=os.environ['TELEGRAM_TOKEN'])
         chat_id = os.environ['TELEGRAM_CHAT_ID']
         print(f'Sending Telegram message')

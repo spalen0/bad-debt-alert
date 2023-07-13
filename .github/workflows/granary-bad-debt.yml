@@ -23,6 +23,5 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_GRANARY }}
         PROTOCOL: "Granary"
-        DEBT_THRESHOLD: "5000"
         DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/optimism_granary.json"
