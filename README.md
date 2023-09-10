@@ -20,4 +20,4 @@ Alerting Telegram bot for bad debt data from Risk DAO. It's a simple Python scri
 
 There is a special workflow for USDR Treasury. It checks if the USDR Treasury in DAI is below a given ratio threshold it will send Telegram message to a defined chat.
 
-- [USDR Treasury Workflow](.github/workflows/usdr-treasury-alert.yml)
+- [USDR Treasury Workflow](.github/workflows/usdr-treasury-trigger.yml)
