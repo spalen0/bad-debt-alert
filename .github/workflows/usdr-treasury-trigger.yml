@@ -22,5 +22,5 @@ jobs:
       env:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_USDR_CHAT_ID: ${{ secrets.TELEGRAM_USDR_CHAT_ID }}
-        DAI_THRESHOLD_RATIO: "17"
+        USDR_DAI_THRESHOLD_RATIO: "17"
         POLYGON_KEY: ${{ secrets.POLYGON_KEY }}
