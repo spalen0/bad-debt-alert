@@ -7,7 +7,7 @@ Alerting Telegram bot for bad debt data from Risk DAO. It's a simple Python scri
 - Add new workflow to `.github/workflows`
 - In GitHub repository settings add [secrets](.github/workflows/sonne-bad-debt.yml#L23):
     - [`TELEGRAM_TOKEN`](https://core.telegram.org/bots/tutorial#obtain-your-bot-token) - generate token for your bot.
-    - [`TELEGRAM_CHAT_ID`](https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates) - open the link in a browser and change `{TELEGRAM_TOKEN}` to your token. Find your chat id in the JSON response.
+    - [`TELEGRAM_CHAT_ID`](https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates) - open the link in a browser and change `{TELEGRAM_TOKEN}` to your token. Find your chat id in the JSON response. It's possible to set multiple chat ids separated by comma.
 - Set remaining [env variables](.github/workflows/bad-debt-alert.yml#L25):
     - `PROTOCOL` name of the protocol you want to monitor.
     - `DEBT_THRESHOLD` in dollars after which an alert will be sent to Telegram chat. Optional value.

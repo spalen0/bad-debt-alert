@@ -32,8 +32,9 @@ if response.status_code == 200:
         threshold > 0 and total_bad_debt / 10**decimals > threshold
     ) or ratio_of_bad_debt > threshold_ratio:
         bot = telegram.Bot(token=os.environ["TELEGRAM_TOKEN"])
-        chat_id = os.environ["TELEGRAM_CHAT_ID"]
+        chat_ids = os.environ["TELEGRAM_CHAT_ID"].split(",")
         print(f"Sending Telegram message")
-        asyncio.run(bot.send_message(chat_id=chat_id, text=message))
+        for chat_id in chat_ids:
+            asyncio.run(bot.send_message(chat_id=chat_id, text=message))
 else:
     print(f"Request failed with status code {response.status_code}")
