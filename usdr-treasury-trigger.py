@@ -58,4 +58,6 @@ if ratio_of_dai_to_usdr < threshold_ratio:
     chat_ids = os.environ["TELEGRAM_USDR_CHAT_ID"].split(",")
     print(f"Sending Telegram message")
     for chat_id in chat_ids:
-        asyncio.run(bot.send_message(chat_id=chat_id, text=message))
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(bot.send_message(chat_id=chat_id, text=message))

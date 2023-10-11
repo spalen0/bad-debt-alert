@@ -35,6 +35,8 @@ if response.status_code == 200:
         chat_ids = os.environ["TELEGRAM_CHAT_ID"].split(",")
         print(f"Sending Telegram message")
         for chat_id in chat_ids:
-            asyncio.run(bot.send_message(chat_id=chat_id, text=message))
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            loop.run_until_complete(bot.send_message(chat_id=chat_id, text=message))
 else:
     print(f"Request failed with status code {response.status_code}")
