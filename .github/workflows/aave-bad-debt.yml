@@ -8,9 +8,9 @@ jobs:
   my_job:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python 3.10
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10'
     - name: Install dependencies
@@ -24,4 +24,4 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Aave V3 Mainnet"
         DEBT_THRESHOLD_RATIO: "1"
-        DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/ethereum_aave%20v3.json"
+        DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/ethereum_aave%20v3.json" # https://github.com/Risk-DAO/simulation-results/blob/main/bad-debt/latest/ethereum_aave%20v3.json
