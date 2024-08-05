@@ -1,4 +1,4 @@
-name: Aave V3 Mainnet Bad Debt Trigger
+name: Aave V3 Bad Debt Trigger
 
 on:
   schedule:
