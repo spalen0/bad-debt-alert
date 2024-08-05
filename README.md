@@ -13,9 +13,3 @@ Alerting Telegram bot for bad debt data from Risk DAO. It's a simple Python scri
     - `DEBT_THRESHOLD` in dollars after which an alert will be sent to Telegram chat. Optional value.
     - `DEBT_THRESHOLD_RATIO` in percent after which an alert will be sent to Telegram chat. Default value is 100%.
     - `DATA_URL` link to the data source in JSON format. [Link](https://github.com/Risk-DAO/simulation-results/tree/main/bad-debt/latest) to all RiskDAO data sources. Example data URL for [Sonne Finance](https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/optimism_sonne.json).
-
-## Custom alerts
-
-### USDR Treasury
-
-There is a special workflow for USDR Treasury. It checks if the USDR Treasury in DAI is below a given ratio threshold it will send Telegram message to a defined chat.
