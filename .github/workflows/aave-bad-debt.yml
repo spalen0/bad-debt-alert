@@ -1,10 +1,9 @@
 name: Aave V3 Bad Debt Trigger
 
 on:
-  pull_request:
+  push:
     branches:
-      - master
-
+      - '*'
 env:
   DEBT_THRESHOLD_RATIO: "0"
   BAD_DEBT_TELEGRAM_TOKEN: ${{ secrets.BAD_DEBT_TELEGRAM_TOKEN }}
