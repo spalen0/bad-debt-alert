@@ -1,8 +1,12 @@
 name: Aave V3 Bad Debt Trigger
 
 on:
-  schedule:
-    - cron: '0 * * * *'
+  pull_request:
+    branches:
+      - master
+
+env:
+  DEBT_THRESHOLD_RATIO: "0"
 
 jobs:
   my_job:
@@ -24,7 +28,6 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Aave V3 Mainnet"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/ethereum_aave%20v3.json"
     - name: Run Aave V3 Arbitrum
       run: python bad-debt-trigger.py
@@ -32,7 +35,6 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Aave V3 Arbitrum"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/arbitrum_aave%20v3.json"
     - name: Run Aave V3 Polygon
       run: python bad-debt-trigger.py
@@ -40,7 +42,6 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Aave V3 Polygon"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/polygon_aave%20v3.json"
     - name: Run Aave V3 Optimism
       run: python bad-debt-trigger.py
@@ -48,5 +49,4 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Aave V3 Optimism"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/optimism_aave%20v3.json"
