@@ -1,12 +1,11 @@
 name: Aave V3 Bad Debt Trigger
 
 on:
-  pull_request:
-    branches:
-      - master
+  schedule:
+      - cron: '5 * * * *'
 
 env:
-  DEBT_THRESHOLD_RATIO: "0"
+  DEBT_THRESHOLD_RATIO: "0.5"
 
 jobs:
   my_job:
