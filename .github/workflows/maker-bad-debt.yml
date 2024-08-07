@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '10 * * * *'
 
+env:
+  DEBT_THRESHOLD_RATIO: "0.5"
+
 jobs:
   my_job:
     runs-on: ubuntu-latest
@@ -24,5 +27,4 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Maker DAO"
-        DEBT_THRESHOLD_RATIO: "0.5"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/ethereum_maker.json"

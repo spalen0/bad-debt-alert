@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '5 * * * *'
 
+env:
+  DEBT_THRESHOLD_RATIO: "0.5"
+
 jobs:
   my_job:
     runs-on: ubuntu-latest
@@ -24,7 +27,6 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Comp V3 WETH Mainnet"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/ethereum_compound%20v3_WETH.json"
     - name: Run Comp V3 USDC Mainnet
       run: python bad-debt-trigger.py
@@ -32,7 +34,6 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Comp V3 USDC Mainnet"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/ethereum_compound%20v3_USDC.json"
     - name: Run Comp V3 USDC Arbitrum
       run: python bad-debt-trigger.py
@@ -40,7 +41,6 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Comp V3 USDC Arbitrum"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/arbitrum_compound%20v3_USDC.json"
     - name: Run Comp V3 USDCe Arbitrum
       run: python bad-debt-trigger.py
@@ -48,7 +48,6 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Comp V3 USDCe Arbitrum"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/arbitrum_compound%20v3_USDCe.json"
     - name: Run Comp V3 USDCe Polygon
       run: python bad-debt-trigger.py
@@ -56,7 +55,6 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Comp V3 USDC Polygon"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/polygon_compound%20v3_USDCe.json"
     - name: Run Comp V3 WETH Base
       run: python bad-debt-trigger.py
@@ -64,7 +62,6 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Comp V3 WETH Base"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/base_compound%20v3_WETH.json"
     - name: Run Comp V3 USDbC Base
       run: python bad-debt-trigger.py
@@ -72,5 +69,4 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         PROTOCOL: "Comp V3 USDbC Base"
-        DEBT_THRESHOLD_RATIO: "1"
         DATA_URL: "https://raw.githubusercontent.com/Risk-DAO/simulation-results/main/bad-debt/latest/base_compound%20v3_USDbC.json"
