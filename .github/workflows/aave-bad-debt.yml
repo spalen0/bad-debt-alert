@@ -5,7 +5,7 @@ on:
     - cron: '0 * * * *'
 
 env:
-  DEBT_THRESHOLD_RATIO: "0"
+  DEBT_THRESHOLD_RATIO: "0.5"
   TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
