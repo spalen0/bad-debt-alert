@@ -2,7 +2,7 @@ name: Aave V3 Bad Debt Trigger
 
 on:
   schedule:
-      - cron: '5 * * * *'
+    - cron: '5 * * * *'
 
 env:
   DEBT_THRESHOLD_RATIO: "0.5"
